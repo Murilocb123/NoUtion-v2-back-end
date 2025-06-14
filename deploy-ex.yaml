@@ -1,0 +1,60 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+    name: spring-app
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: spring-app
+    template:
+        metadata:
+            labels:
+                app: spring-app
+        spec:
+            containers:
+                - name: spring-app
+                  image: tiomuri12/noution-v2-back-end:0.0.1
+                  ports:
+                      - containerPort: 8080
+                  env:
+                      - name: DB_USERNAME
+                        value: "postgres"
+                      - name: DB_URL
+                        value: "localhost:5433/"
+                      - name: DB_PASSWORD
+                        value: "postgres"
+                      - name: DB_NAME
+                        value: "postgres"
+                      - name: SECRET_KEY
+                        value: "my-secret-key-noution"
+                      - name: AWS_ACCESS_KEY
+                        value: "default"
+                      - name: AWS_SECRET_KEY
+                        value: "default"
+                      - name: AWS_CREATE_USER_URL
+                        value: "default"
+                      - name: ALLOWED_ORIGIN
+                        value: "http://localhost:4200"
+                      - name: ALLOWED_ORIGIN2
+                        value: "http://localhost:4201"
+                  resources:
+                      limits:
+                          memory: "512Mi"
+                          cpu: "500m"
+                      requests:
+                          memory: "256Mi"
+                          cpu: "250m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: spring-app-svc
+spec:
+    selector:
+        app: spring-app
+    type: NodePort
+    ports:
+        - port: 8080
+          targetPort: 8080
+          nodePort: 30080
