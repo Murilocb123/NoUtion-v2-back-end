@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+    spring-app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: tiomuri12/noution-v2-back-end:0.0.1
+        container_name: spring-app
+        ports:
+            - "8080:8080"
+        restart: unless-stopped
+        environment:
+            - DB_USERNAME=postgres
+            - DB_URL=localhost:5433/
+            - DB_PASSWORD=postgres
+            - DB_NAME=postgres
+            - SECRET_KEY=my-secret-key-noution
+            - AWS_ACCESS_KEY=default
+            - AWS_SECRET_KEY=default
+            - AWS_CREATE_USER_URL=default
+            - ALLOWED_ORIGIN=http://localhost:4200
+            - ALLOWED_ORIGIN2=http://localhost:4201
