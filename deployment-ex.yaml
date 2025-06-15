@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: spring-app-service
+    labels:
+        app: spring-app
+spec:
+    type: ClusterIP
+    ports:
+        - port: 80
+          targetPort: 8080
+    selector:
+        app: spring-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: spring-app-deployment
+    labels:
+        app: spring-app
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: spring-app
+    template:
+        metadata:
+            labels:
+                app: spring-app
+        spec:
+            containers:
+                - name: spring-app
+                  image: tiomuri12/noution-v2-back-end:0.0.1
+                  ports:
+                      - containerPort: 8080
+                  env:
+                      - name: DB_USERNAME
+                        value: "postgres"
+                      - name: DB_URL
+                        value: "-"
+                      - name: DB_PASSWORD
+                        value: "-"
+                      - name: DB_NAME
+                        value: "postgres"
+                      - name: SECRET_KEY
+                        value: "-"
+                      - name: AWS_ACCESS_KEY
+                        value: "-"
+                      - name: AWS_SECRET_KEY
+                        value: "-"
+                      - name: AWS_CREATE_USER_URL
+                        value: "fila-url"
+                      - name: ALLOWED_ORIGIN
+                        value: "*"
+                      - name: ALLOWED_ORIGIN2
+                        value: "*"
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: spring-app-ingress
+spec:
+    rules:
+        - host: <load-balancer-dns-name>
+          http:
+              paths:
+                  - path: /
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: spring-app-service
+                            port:
+                                number: 80

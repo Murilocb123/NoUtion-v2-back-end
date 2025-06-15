@@ -101,7 +101,6 @@ Para facilitar o deploy, uma imagem Docker está disponível.
 URL: https://hub.docker.com/repository/docker/tiomuri12/noution-v2-back-end
 
 
-
 ---
 
 Desenvolvido por [MuriloCB123](https://github.com/Murilocb123) 🚀
