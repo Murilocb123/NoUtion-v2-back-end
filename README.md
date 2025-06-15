@@ -1,5 +1,5 @@
 
-# Noution V2 - Backend
+# Noution V2 - Back-end
 
 Backend do projeto **Noution V2**, desenvolvido em Java com Spring Boot. Este projeto fornece uma API REST para gerenciamento de tarefas com suporte a multi-tenant, autenticação JWT e integração com AWS SQS.
 
