@@ -3,6 +3,10 @@
 
 Backend do projeto **Noution V2**, desenvolvido em Java com Spring Boot. Este projeto fornece uma API REST para gerenciamento de tarefas com suporte a multi-tenant, autenticação JWT e integração com AWS SQS.
 
+## ️ 💻 Front-end
+
+- Repositório do front-end: [NoUtion - v2 - Front-end](http://github.com/Murilocb123/NoUtion-v2-front-end)
+
 ## 🛠️ Tecnologias Utilizadas
 
 - Java 21
