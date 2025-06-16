@@ -32,7 +32,7 @@ aws:
   queue:
     createUserURL: ${AWS_CREATE_USER_URL:default}
 allowed:
-    origin1: ${ALLOWED_ORIGIN:http://localhost:4200},
+    origin1: ${ALLOWED_ORIGIN1:http://localhost:4200}
     origin2: ${ALLOWED_ORIGIN2:}
 
 

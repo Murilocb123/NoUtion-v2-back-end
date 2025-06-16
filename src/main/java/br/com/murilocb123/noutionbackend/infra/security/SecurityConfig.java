@@ -1,6 +1,7 @@
 package br.com.murilocb123.noutionbackend.infra.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -27,6 +28,12 @@ public class SecurityConfig {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
+    @Value("${allowed.origin1}")
+    private String alowedOrigin1;
+
+    @Value("${allowed.origin2}")
+    private String alowedOrigin2;
+
     @Autowired
     SecurityFilter securityFilter;
 
@@ -47,7 +54,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:4200")); // sem barra final
+        configuration.setAllowedOrigins(List.of("http://localhost:4200", alowedOrigin1, alowedOrigin2)); // sem barra final
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true); // importante se estiver usando cookies ou auth header
