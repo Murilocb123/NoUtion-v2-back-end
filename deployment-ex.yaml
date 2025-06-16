@@ -30,7 +30,7 @@ spec:
         spec:
             containers:
                 - name: spring-app
-                  image: tiomuri12/noution-v2-back-end:0.0.1
+                  image: tiomuri12/noution-v2-back-end:0.0.3
                   ports:
                       - containerPort: 8080
                   env:
