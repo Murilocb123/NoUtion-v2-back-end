@@ -3,17 +3,14 @@ package br.com.murilocb123.noutionbackend.infra.controller;
 import br.com.murilocb123.noutionbackend.dto.LoginRequest;
 import br.com.murilocb123.noutionbackend.dto.RegisterRequest;
 import br.com.murilocb123.noutionbackend.dto.ResponseAuth;
-import br.com.murilocb123.noutionbackend.entities.UserEntity;
-import br.com.murilocb123.noutionbackend.infra.security.TokenService;
 import br.com.murilocb123.noutionbackend.infra.service.AuthService;
-import br.com.murilocb123.noutionbackend.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")

@@ -50,7 +50,7 @@ spec:
                         value: "-"
                       - name: AWS_CREATE_USER_URL
                         value: "fila-url"
-                      - name: ALLOWED_ORIGIN
+                      - name: ALLOWED_ORIGIN1
                         value: "*"
                       - name: ALLOWED_ORIGIN2
                         value: "*"
